@@ -42,28 +42,34 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Sample Screen')
                 ->icon('bs.collection')
                 ->route('platform.example')
-                ->badge(fn () => 6),
+                ->badge(fn () => 6)
+                ->permission('platform.examples'),
 
             Menu::make('Form Elements')
                 ->icon('bs.card-list')
                 ->route('platform.example.fields')
+                ->permission('platform.examples')
                 ->active('*/examples/form/*'),
 
             Menu::make('Layouts Overview')
                 ->icon('bs.window-sidebar')
+                ->permission('platform.examples')
                 ->route('platform.example.layouts'),
 
             Menu::make('Grid System')
                 ->icon('bs.columns-gap')
+                ->permission('platform.examples')
                 ->route('platform.example.grid'),
 
             Menu::make('Charts')
                 ->icon('bs.bar-chart')
+                ->permission('platform.examples')
                 ->route('platform.example.charts'),
 
             Menu::make('Cards')
                 ->icon('bs.card-text')
                 ->route('platform.example.cards')
+                ->permission('platform.examples')
                 ->divider(),
 
             Menu::make(__('Users'))
@@ -82,18 +88,21 @@ class PlatformProvider extends OrchidServiceProvider
                 ->title('Docs')
                 ->icon('bs.box-arrow-up-right')
                 ->url('https://orchid.software/en/docs')
+                ->permission('platform.examples')
                 ->target('_blank'),
 
             Menu::make('Changelog')
                 ->icon('bs.box-arrow-up-right')
                 ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
                 ->target('_blank')
+                ->permission('platform.examples')
                 ->badge(fn () => Dashboard::version(), Color::DARK),
 
             Menu::make('Tasks')
                 ->icon('bag')
                 ->route('platform.task')
                 ->title('Tools')
+                ->permission('platform.task')
         ];
     }
 
@@ -102,12 +111,41 @@ class PlatformProvider extends OrchidServiceProvider
      *
      * @return ItemPermission[]
      */
+    // public function permissions(): array
+    // {
+    //     return [
+    //         ItemPermission::group(__('System'))
+    //             ->addPermission('platform.systems.roles', __('Roles'))
+    //             ->addPermission('platform.systems.users', __('Users')),
+    //     ];
+    // }
+
+    
     public function permissions(): array
     {
         return [
             ItemPermission::group(__('System'))
-                ->addPermission('platform.systems.roles', __('Roles'))
-                ->addPermission('platform.systems.users', __('Users')),
+                ->addPermission(
+                    'platform.systems.roles',
+                    __('Roles')
+                )
+                ->addPermission(
+                    'platform.systems.users',
+                    __('Users')
+                ),
+
+            ItemPermission::group(__('Tools'))
+                ->addPermission(
+                    'platform.task',
+                    __('Tasks')
+                ),
+
+            ItemPermission::group(__('Examples'))
+                ->addPermission(
+                    'platform.examples',
+                    __('Example Screens')
+                ),
         ];
     }
+
 }

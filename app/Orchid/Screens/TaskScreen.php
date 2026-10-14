@@ -105,4 +105,9 @@ class TaskScreen extends Screen
     {
         $task->delete();
     }
+
+    public function permission(): ?iterable
+    {
+        return ['platform.task'];
+    }
 }
