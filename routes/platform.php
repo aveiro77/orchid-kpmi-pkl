@@ -20,6 +20,10 @@ use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 use App\Orchid\Screens\TaskScreen;
+use App\Models\Member;
+use App\Orchid\Screens\Member\MemberEditScreen;
+use App\Orchid\Screens\Member\MemberListScreen;
+use App\Orchid\Screens\Skill\SkillListScreen;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,3 +111,26 @@ Route::screen('/examples/cards', ExampleCardsScreen::class)->name('platform.exam
 Route::screen('task', TaskScreen::class)->name('platform.task')->breadcrumbs(function (Trail $trail) {
         return $trail->parent('platform.index')->push('Task');
     });
+
+Route::screen('members', MemberListScreen::class)
+    ->name('platform.members')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push('Anggota', route('platform.members')));
+
+Route::screen('members/create', MemberEditScreen::class)
+    ->name('platform.members.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.members')
+        ->push('Tambah'));
+
+Route::screen('members/{member}/edit', MemberEditScreen::class)
+    ->name('platform.members.edit')
+    ->breadcrumbs(fn (Trail $trail, Member $member) => $trail
+        ->parent('platform.members')
+        ->push($member->nama_lengkap));
+
+Route::screen('skills', SkillListScreen::class)
+    ->name('platform.skills')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')->push('Skill', route('platform.skills')));

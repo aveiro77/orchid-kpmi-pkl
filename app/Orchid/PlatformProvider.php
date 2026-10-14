@@ -102,7 +102,19 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bag')
                 ->route('platform.task')
                 ->title('Tools')
-                ->permission('platform.task')
+                ->permission('platform.task'),
+
+            Menu::make('Anggota')
+                ->icon('bs.people')
+                ->route('platform.members')
+                ->permission('platform.members')
+                ->title('Komunitas'),
+
+            Menu::make('Skill')->icon('bs.stars')
+                ->route('platform.skills')
+                ->permission('platform.skills')
+                ->addPermission('platform.skills')
+                ->title('Komunitas'),    
         ];
     }
 
@@ -145,6 +157,10 @@ class PlatformProvider extends OrchidServiceProvider
                     'platform.examples',
                     __('Example Screens')
                 ),
+
+            ItemPermission::group('Komunitas')
+                ->addPermission('platform.members', 'Kelola Anggota')
+                ->addPermission('platform.skills', 'Kelola Skill' )
         ];
     }
 
