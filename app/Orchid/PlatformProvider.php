@@ -113,8 +113,9 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Skill')->icon('bs.stars')
                 ->route('platform.skills')
                 ->permission('platform.skills')
-                ->addPermission('platform.skills')
-                ->title('Komunitas'),    
+                ->addPermission('platform.skills'),    
+
+                
         ];
     }
 

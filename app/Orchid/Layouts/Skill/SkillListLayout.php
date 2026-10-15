@@ -1,6 +1,5 @@
 <?php
 
-// app/Orchid/Layouts/Skill/SkillListLayout.php
 namespace App\Orchid\Layouts\Skill;
 
 use App\Models\Skill;
@@ -9,7 +8,6 @@ use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
-use Orchid\Screen\Fields\Relation;
 
 class SkillListLayout extends Table
 {
@@ -36,16 +34,6 @@ class SkillListLayout extends Table
                         ->confirm('Hapus skill ini dari semua anggota?')
                         ->method('remove', ['id' => $s->id]),
                 ])),
-
-            Relation::make('member.professionalRoles.')
-                ->fromModel(ProfessionalRole::class, 'nama')
-                ->multiple()
-                ->title('Peran Profesi'),
-
-            Relation::make('member.skills.')
-                ->fromModel(Skill::class, 'nama')
-                ->multiple()
-                ->title('Skill'),
         ];
     }
 }

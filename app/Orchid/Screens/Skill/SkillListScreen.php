@@ -11,6 +11,8 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
+use Illuminate\Validation\Rule;
+
 
 class SkillListScreen extends Screen
 {
@@ -55,9 +57,12 @@ class SkillListScreen extends Screen
 
     public function save(Request $request, Skill $skill): void
     {
+    
         $data = $request->validate([
-            'skill.nama' => ['required', 'string', 'max:100',
-                'unique:skills,nama,'.$skill->id],
+            'skill.nama' => [
+                'required', 'string', 'max:100',
+                Rule::unique('skills', 'nama')->ignore($skill->id),
+            ],
         ]);
 
         $skill->fill($data['skill'])->save();

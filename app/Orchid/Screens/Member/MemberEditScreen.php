@@ -15,6 +15,9 @@ use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
+use App\Models\ProfessionalRole;
+use App\Models\Skill;
+use Orchid\Screen\Fields\Relation;
 
 class MemberEditScreen extends Screen
 {
