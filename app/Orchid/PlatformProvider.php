@@ -138,30 +138,30 @@ class PlatformProvider extends OrchidServiceProvider
     {
         return [
             ItemPermission::group(__('System'))
-                ->addPermission(
-                    'platform.systems.roles',
-                    __('Roles')
-                )
-                ->addPermission(
-                    'platform.systems.users',
-                    __('Users')
-                ),
+                ->addPermission('platform.systems.roles', __('Roles'))
+                ->addPermission('platform.systems.users', __('Users')),
 
             ItemPermission::group(__('Tools'))
-                ->addPermission(
-                    'platform.task',
-                    __('Tasks')
-                ),
+                ->addPermission('platform.task', __('Tasks')),
 
             ItemPermission::group(__('Examples'))
-                ->addPermission(
-                    'platform.examples',
-                    __('Example Screens')
-                ),
+                ->addPermission('platform.examples', __('Example Screens')),
 
-            ItemPermission::group('Komunitas')
+            ItemPermission::group('Master Data')
                 ->addPermission('platform.members', 'Kelola Anggota')
                 ->addPermission('platform.skills', 'Kelola Skill' )
+                ->addPermission('platform.professional-roles', 'Profesi')
+                ->addPermission('platform.businesses', 'Usaha')
+                ->addPermission('platform.opportunities', 'Peluang')
+                ->addPermission('platform.referrals', 'Referral')
+                ->addPermission('platform.events', 'Event'),
+
+            ItemPermission::group('Member Area')
+                ->addPermission('platform.my.profile', 'Profil Saya')
+                ->addPermission('platform.my.skills', 'Skill Saya')
+                ->addPermission('platform.my.businesses', 'Usaha Saya')
+                ->addPermission('platform.my.opportunities', 'Peluang Saya')
+                ->addPermission('platform.my.events', 'Event Saya'),
         ];
     }
 

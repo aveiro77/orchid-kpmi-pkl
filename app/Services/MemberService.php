@@ -19,6 +19,13 @@ class MemberService
 
     public function delete(Member $member): void
     {
+        // DB::transaction(function () use ($member) {
+        //     $member->invitations()
+        //         ->whereNull('accepted_at')
+        //         ->update(['expires_at' => now()]);   // matikan undangan pending
+
+        //     $member->delete();                       // soft delete
+        // });
         $member->delete(); // soft delete
     }
 }
