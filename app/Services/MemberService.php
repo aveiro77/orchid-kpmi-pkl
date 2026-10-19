@@ -1,6 +1,6 @@
 <?php
 // app/Services/MemberService.php
-namespace App\Services\Member;
+namespace App\Services;
 
 use App\Models\Member;
 use Illuminate\Support\Facades\DB;

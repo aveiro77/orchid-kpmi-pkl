@@ -1,6 +1,6 @@
 <?php
 // app/Services/Member/MemberAccountService.php
-namespace App\Services\MemberAccount;
+namespace App\Services;
 
 use App\Models\Member;
 use App\Models\User;
