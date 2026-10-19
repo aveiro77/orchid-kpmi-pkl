@@ -1,5 +1,7 @@
 <?php
+
 // app/Services/Member/MemberAccountService.php
+
 namespace App\Services;
 
 use App\Models\Member;
@@ -25,8 +27,8 @@ class MemberAccountService
 
         return DB::transaction(function () use ($member, $password) {
             $user = User::create([
-                'name'     => $member->nama_lengkap,
-                'email'    => $member->email,
+                'name' => $member->nama_lengkap,
+                'email' => $member->email,
                 'password' => Hash::make($password),
             ]);
 

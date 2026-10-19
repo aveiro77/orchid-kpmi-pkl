@@ -14,10 +14,6 @@ class PlatformProvider extends OrchidServiceProvider
 {
     /**
      * Bootstrap the application services.
-     *
-     * @param Dashboard $dashboard
-     *
-     * @return void
      */
     public function boot(Dashboard $dashboard): void
     {
@@ -113,9 +109,8 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Skill')->icon('bs.stars')
                 ->route('platform.skills')
                 ->permission('platform.skills')
-                ->addPermission('platform.skills'),    
+                ->addPermission('platform.skills'),
 
-                
         ];
     }
 
@@ -133,7 +128,6 @@ class PlatformProvider extends OrchidServiceProvider
     //     ];
     // }
 
-    
     public function permissions(): array
     {
         return [
@@ -149,7 +143,7 @@ class PlatformProvider extends OrchidServiceProvider
 
             ItemPermission::group('Master Data')
                 ->addPermission('platform.members', 'Kelola Anggota')
-                ->addPermission('platform.skills', 'Kelola Skill' )
+                ->addPermission('platform.skills', 'Kelola Skill')
                 ->addPermission('platform.professional-roles', 'Profesi')
                 ->addPermission('platform.businesses', 'Usaha')
                 ->addPermission('platform.opportunities', 'Peluang')
@@ -164,5 +158,4 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.my.events', 'Event Saya'),
         ];
     }
-
 }

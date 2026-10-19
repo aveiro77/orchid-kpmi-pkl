@@ -1,6 +1,7 @@
 <?php
 
 // app/Orchid/Layouts/MemberListLayout.php
+
 namespace App\Orchid\Layouts\Member;
 
 use App\Models\Member;

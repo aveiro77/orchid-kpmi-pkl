@@ -1,18 +1,18 @@
 <?php
 
 // app/Orchid/Screens/Skill/SkillListScreen.php
+
 namespace App\Orchid\Screens\Skill;
 
 use App\Models\Skill;
 use App\Orchid\Layouts\Skill\SkillListLayout;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
-use Illuminate\Validation\Rule;
-
 
 class SkillListScreen extends Screen
 {
@@ -24,9 +24,15 @@ class SkillListScreen extends Screen
         ];
     }
 
-    public function name(): ?string { return 'Skill'; }
+    public function name(): ?string
+    {
+        return 'Skill';
+    }
 
-    public function permission(): ?iterable { return ['platform.skills']; }
+    public function permission(): ?iterable
+    {
+        return ['platform.skills'];
+    }
 
     public function commandBar(): iterable
     {
@@ -57,7 +63,7 @@ class SkillListScreen extends Screen
 
     public function save(Request $request, Skill $skill): void
     {
-    
+
         $data = $request->validate([
             'skill.nama' => [
                 'required', 'string', 'max:100',

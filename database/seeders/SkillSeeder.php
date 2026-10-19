@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Skill;
+use Illuminate\Database\Seeder;
 
 class SkillSeeder extends Seeder
 {
@@ -14,7 +13,7 @@ class SkillSeeder extends Seeder
     public function run(): void
     {
         $skills = ['Web Development', 'Graphic Design', 'Accounting',
-                'Digital Marketing', 'Photography', 'Legal Consultant'];
+            'Digital Marketing', 'Photography', 'Legal Consultant'];
 
         foreach ($skills as $nama) {
             Skill::firstOrCreate(['nama' => $nama]);

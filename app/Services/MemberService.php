@@ -1,5 +1,7 @@
 <?php
+
 // app/Services/MemberService.php
+
 namespace App\Services;
 
 use App\Models\Member;

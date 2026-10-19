@@ -24,7 +24,7 @@ class Member extends Model
     // Kolom yang boleh difilter dari tabel
     protected $allowedFilters = [
         'nama_lengkap' => Like::class,
-        'kota'         => Like::class,
+        'kota' => Like::class,
         'status_aktif' => Where::class,
     ];
 
