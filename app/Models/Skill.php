@@ -1,6 +1,7 @@
 <?php
 
 // app/Models/Skill.php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,6 +17,7 @@ class Skill extends Model
     protected $fillable = ['nama'];
 
     protected $allowedFilters = ['nama' => Like::class];
+
     protected $allowedSorts = ['id', 'nama'];
 
     public function members()

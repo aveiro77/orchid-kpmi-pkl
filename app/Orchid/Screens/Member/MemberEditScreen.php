@@ -1,27 +1,25 @@
 <?php
 
 // app/Orchid/Screens/MemberEditScreen.php
+
 namespace App\Orchid\Screens\Member;
 
 use App\Http\Requests\MemberRequest;
 use App\Models\Member;
+use App\Services\MemberAccountService;
 use App\Services\MemberService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Password;
 use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\Switcher;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
-use App\Models\ProfessionalRole;
-use App\Models\Skill;
-use Orchid\Screen\Fields\Relation;
-use Orchid\Screen\Actions\ModalToggle;
-use Orchid\Screen\Fields\Password;
-use Illuminate\Http\Request;
-use App\Services\MemberAccountService;
 
 class MemberEditScreen extends Screen
 {
@@ -122,7 +120,7 @@ class MemberEditScreen extends Screen
 
         try {
             $service->createAccount($member, $request->input('password'));
-            Toast::info('Akun dibuat. Email login: ' . $member->email);
+            Toast::info('Akun dibuat. Email login: '.$member->email);
         } catch (\DomainException $e) {
             Toast::error($e->getMessage());
         }

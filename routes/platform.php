@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Models\Member;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -11,19 +12,18 @@ use App\Orchid\Screens\Examples\ExampleGridScreen;
 use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
 use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
+use App\Orchid\Screens\Member\MemberEditScreen;
+use App\Orchid\Screens\Member\MemberListScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
+use App\Orchid\Screens\Skill\SkillListScreen;
+use App\Orchid\Screens\TaskScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
-use App\Orchid\Screens\TaskScreen;
-use App\Models\Member;
-use App\Orchid\Screens\Member\MemberEditScreen;
-use App\Orchid\Screens\Member\MemberListScreen;
-use App\Orchid\Screens\Skill\SkillListScreen;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,8 +109,8 @@ Route::screen('/examples/cards', ExampleCardsScreen::class)->name('platform.exam
 // Route::screen('idea', Idea::class, 'platform.screens.idea');
 // Route::screen('task', TaskScreen::class)->name('platform.task');
 Route::screen('task', TaskScreen::class)->name('platform.task')->breadcrumbs(function (Trail $trail) {
-        return $trail->parent('platform.index')->push('Task');
-    });
+    return $trail->parent('platform.index')->push('Task');
+});
 
 Route::screen('members', MemberListScreen::class)
     ->name('platform.members')

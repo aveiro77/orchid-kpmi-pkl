@@ -2,14 +2,14 @@
 
 namespace App\Orchid\Screens;
 
-use Orchid\Screen\Screen;
-use Orchid\Screen\Fields\Input;
-use Orchid\Support\Facades\Layout;
-use Orchid\Screen\Actions\ModalToggle;
 use App\Models\Task;
 use Illuminate\Http\Request;
-use Orchid\Screen\TD;
 use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\ModalToggle;
+use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Screen;
+use Orchid\Screen\TD;
+use Orchid\Support\Facades\Layout;
 
 class TaskScreen extends Screen
 {
@@ -32,7 +32,7 @@ class TaskScreen extends Screen
      */
     public function name(): ?string
     {
-        return "TaskScreen";
+        return 'TaskScreen';
     }
 
     /**
@@ -41,9 +41,9 @@ class TaskScreen extends Screen
      */
     public function description(): ?string
     {
-        return "TaskScreen";
+        return 'TaskScreen';
     }
-    
+
     /**
      * Identifies control buttons and events.
      * which will have to happen by pressing
@@ -96,7 +96,7 @@ class TaskScreen extends Screen
             'task.name' => 'required|max:255',
         ]);
 
-        $task = new Task();
+        $task = new Task;
         $task->name = $request->input('task.name');
         $task->save();
     }

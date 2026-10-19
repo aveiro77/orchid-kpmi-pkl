@@ -1,5 +1,7 @@
 <?php
+
 // app/Orchid/Screens/MemberListScreen.php
+
 namespace App\Orchid\Screens\Member;
 
 use App\Models\Member;
