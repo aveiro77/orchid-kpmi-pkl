@@ -1,8 +1,9 @@
 <?php
 // app/Services/MemberService.php
-namespace App\Services;
+namespace App\Services\Member;
 
 use App\Models\Member;
+use Illuminate\Support\Facades\DB;
 
 class MemberService
 {

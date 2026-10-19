@@ -18,6 +18,10 @@ use Orchid\Support\Facades\Toast;
 use App\Models\ProfessionalRole;
 use App\Models\Skill;
 use Orchid\Screen\Fields\Relation;
+use Orchid\Screen\Actions\ModalToggle;
+use Orchid\Screen\Fields\Password;
+use Illuminate\Http\Request;
+use App\Services\MemberAccountService;
 
 class MemberEditScreen extends Screen
 {
@@ -53,6 +57,12 @@ class MemberEditScreen extends Screen
             Button::make('Simpan')
                 ->icon('bs.check-circle')
                 ->method('save'),
+
+            ModalToggle::make('Buat Akun Login')
+                ->modal('accountModal')
+                ->method('createAccount')
+                ->icon('bs.person-plus')
+                ->canSee($this->member->exists && ! $this->member->user_id),
         ];
     }
 
@@ -74,6 +84,12 @@ class MemberEditScreen extends Screen
                 Input::make('member.instagram')->title('Instagram'),
                 Switcher::make('member.status_aktif')->sendTrueOrFalse()->title('Status Aktif'),
             ]),
+            Layout::modal('accountModal', Layout::rows([
+                Password::make('password')
+                    ->title('Password awal')
+                    ->help('Minimal 8 karakter. Berikan ke anggota setelah akun dibuat.')
+                    ->required(),
+            ]))->title('Buat Akun Login')->applyButton('Buat Akun'),
         ];
     }
 
@@ -98,5 +114,19 @@ class MemberEditScreen extends Screen
         Toast::info('Anggota berhasil dihapus.');
 
         return redirect()->route('platform.members');
+    }
+
+    public function createAccount(Member $member, Request $request, MemberAccountService $service)
+    {
+        $request->validate(['password' => ['required', 'string', 'min:8']]);
+
+        try {
+            $service->createAccount($member, $request->input('password'));
+            Toast::info('Akun dibuat. Email login: ' . $member->email);
+        } catch (\DomainException $e) {
+            Toast::error($e->getMessage());
+        }
+
+        return redirect()->route('platform.members.edit', $member);
     }
 }
