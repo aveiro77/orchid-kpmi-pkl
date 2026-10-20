@@ -25,6 +25,8 @@ use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
+require __DIR__.'/platform/my-profile.php';
+
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes

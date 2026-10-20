@@ -31,4 +31,11 @@ class MemberService
         // });
         $member->delete(); // soft delete
     }
+
+    public function updateProfile(Member $member, array $data): Member
+    {
+        $member->update($data);
+
+        return $member;
+    }
 }
