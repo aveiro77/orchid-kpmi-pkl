@@ -66,4 +66,8 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
+    public function member()
+    {
+        return $this->hasOne(\App\Models\Member::class);
+    }
 }

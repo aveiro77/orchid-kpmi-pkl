@@ -3,7 +3,6 @@
 @section('title', __('Sign in to your account'))
 
 @section('content')
-    <h2 class="h5 fw-bold text-dark mb-4 text-center">{{ __('Sign In') }}</h2>
 
     @if ($errors->any())
         <div class="alert alert-danger mb-4 py-2 px-3 small rounded-3" role="alert">
