@@ -1,10 +1,12 @@
 <?php
+
 // app/Orchid/Screens/Profile/MyProfileScreen.php
+
 namespace App\Orchid\Screens\Profile;
 
-use App\Http\Requests\Member\MyProfileRequest;
+use App\Http\Requests\MyProfileRequest;
 use App\Models\Member;
-use App\Services\Member\MemberService;
+use App\Services\MemberService;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Cropper;
 use Orchid\Screen\Fields\Input;

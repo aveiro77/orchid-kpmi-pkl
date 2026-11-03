@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
 require __DIR__.'/platform/my-profile.php';
+require __DIR__.'/platform/my-skills.php';
 
 /*
 |--------------------------------------------------------------------------

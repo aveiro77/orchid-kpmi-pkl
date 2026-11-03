@@ -117,6 +117,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.my.profile')
                 ->title('Member Area'),
 
+            Menu::make('Skill Saya')
+                ->icon('bs.stars')
+                ->route('platform.my.skills')
+                ->permission('platform.my.skills'),
+
         ];
     }
 
