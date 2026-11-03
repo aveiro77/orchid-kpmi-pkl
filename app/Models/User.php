@@ -37,8 +37,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'permissions' => 'array',
-        'email_verified_at' => 'datetime',
+        'permissions'          => 'array',
+        'email_verified_at'    => 'datetime',
     ];
 
     /**
@@ -47,11 +47,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $allowedFilters = [
-        'id' => Where::class,
-        'name' => Like::class,
-        'email' => Like::class,
-        'updated_at' => WhereDateStartEnd::class,
-        'created_at' => WhereDateStartEnd::class,
+           'id'         => Where::class,
+           'name'       => Like::class,
+           'email'      => Like::class,
+           'updated_at' => WhereDateStartEnd::class,
+           'created_at' => WhereDateStartEnd::class,
     ];
 
     /**
@@ -66,8 +66,9 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
+
     public function member()
     {
-        return $this->hasOne(\App\Models\Member::class);
+        return $this->hasOne(Member::class);
     }
 }

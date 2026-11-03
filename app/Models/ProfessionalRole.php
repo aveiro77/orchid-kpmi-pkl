@@ -5,11 +5,25 @@ namespace App\Models;
 use Database\Factories\ProfessionalRoleFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Filters\Filterable;
+use Orchid\Filters\Types\Like;
+use Orchid\Screen\AsSource;
 
 class ProfessionalRole extends Model
 {
     /** @use HasFactory<ProfessionalRoleFactory> */
-    use HasFactory;
+    use AsSource, Filterable, HasFactory;
+
+    protected $fillable = ['nama'];
+
+    protected $allowedFilters = [
+        'nama' => Like::class,
+    ];
+
+    protected $allowedSorts = [
+        'id',
+        'nama',
+    ];
 
     public function members()
     {

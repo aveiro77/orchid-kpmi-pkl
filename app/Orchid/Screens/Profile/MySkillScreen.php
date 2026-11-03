@@ -50,15 +50,15 @@ class MySkillScreen extends Screen
     {
         return [
             Layout::rows([
-                Relation::make('member.skills')
-                    ->fromModel(Skill::class, 'nama')
-                    ->multiple()
-                    ->title('Keahlian'),
-
                 Relation::make('member.professionalRoles')
                     ->fromModel(ProfessionalRole::class, 'nama') // Asumsi field nama
                     ->multiple()
                     ->title('Peran Profesional'),
+
+                Relation::make('member.skills')
+                    ->fromModel(Skill::class, 'nama')
+                    ->multiple()
+                    ->title('Keahlian'),
             ]),
         ];
     }
