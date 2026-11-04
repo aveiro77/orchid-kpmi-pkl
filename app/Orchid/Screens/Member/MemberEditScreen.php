@@ -78,8 +78,8 @@ class MemberEditScreen extends Screen
                 Input::make('member.kota')->title('Kota'),
                 TextArea::make('member.bio')->title('Bio')->rows(4),
                 Input::make('member.linkedin')->title('LinkedIn')->placeholder('https://linkedin.com/in/...'),
-                Input::make('member.website')->title('Website'),
-                Input::make('member.instagram')->title('Instagram'),
+                Input::make('member.website')->title('Website')->placeholder('https://...'),
+                Input::make('member.instagram')->title('Instagram')->placeholder('@username'),
                 Switcher::make('member.status_aktif')->sendTrueOrFalse()->title('Status Aktif'),
             ]),
             Layout::modal('accountModal', Layout::rows([

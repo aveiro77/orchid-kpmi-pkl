@@ -111,6 +111,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.skills')
                 ->addPermission('platform.skills'),
 
+            Menu::make('Peran Profesi')->icon('bs.briefcase')
+                ->route('platform.professional-roles')
+                ->permission('platform.professional-roles')
+                ->addPermission('platform.professional-roles'),
+
             Menu::make('Profil Saya')
                 ->icon('bs.person-circle')
                 ->route('platform.my.profile')

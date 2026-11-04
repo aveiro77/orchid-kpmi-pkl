@@ -23,8 +23,8 @@ class MyProfileRequest extends FormRequest
             'member.nomor_wa'     => ['nullable', 'string', 'max:20'],
             'member.kota'         => ['nullable', 'string', 'max:100'],
             'member.bio'          => ['nullable', 'string', 'max:1000'],
-            'member.linkedin'     => ['nullable', 'url', 'max:255'],
-            'member.website'      => ['nullable', 'url', 'max:255'],
+            'member.linkedin'     => ['nullable', 'string', 'max:255'],
+            'member.website'      => ['nullable', 'string', 'max:255'],
             'member.instagram'    => ['nullable', 'string', 'max:100'],
         ];
     }
