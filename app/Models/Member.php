@@ -47,4 +47,9 @@ class Member extends Model
     {
         return $this->belongsToMany(ProfessionalRole::class, 'member_professional_role');
     }
+
+    public function businesses()
+    {
+        return $this->hasMany(Business::class);
+    }
 }
