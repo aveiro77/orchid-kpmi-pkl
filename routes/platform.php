@@ -28,6 +28,7 @@ use Tabuna\Breadcrumbs\Trail;
 require __DIR__.'/platform/my-profile.php';
 require __DIR__.'/platform/my-skills.php';
 require __DIR__.'/platform/professional-roles.php';
+require __DIR__.'/platform/businesses.php';
 
 /*
 |--------------------------------------------------------------------------

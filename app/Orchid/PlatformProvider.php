@@ -116,6 +116,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.professional-roles')
                 ->addPermission('platform.professional-roles'),
 
+            Menu::make('Usaha')->icon('bs.building')
+                ->route('platform.businesses')
+                ->permission('platform.businesses')
+                ->addPermission('platform.businesses'),
+
             Menu::make('Profil Saya')
                 ->icon('bs.person-circle')
                 ->route('platform.my.profile')
@@ -126,6 +131,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.stars')
                 ->route('platform.my.skills')
                 ->permission('platform.my.skills'),
+
+            Menu::make('Usaha Saya')
+                ->icon('bs.building')
+                ->route('platform.my.businesses')
+                ->permission('platform.my.businesses'),
 
         ];
     }
