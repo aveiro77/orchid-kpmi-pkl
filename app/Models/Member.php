@@ -52,4 +52,9 @@ class Member extends Model
     {
         return $this->hasMany(Business::class);
     }
+
+    public function opportunities()
+    {
+        return $this->hasMany(Opportunity::class);
+    }
 }

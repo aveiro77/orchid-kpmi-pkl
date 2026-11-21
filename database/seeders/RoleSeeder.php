@@ -14,11 +14,13 @@ class RoleSeeder extends Seeder
     {
         $member = [
             'platform.index' => true,
+            'platform.my.dashboard' => true,
             'platform.my.profile' => true,
             'platform.my.skills' => true,
             'platform.my.businesses' => true,
             'platform.my.opportunities' => true,
             'platform.my.events' => true,
+            'platform.opportunity-board' => true,
         ];
 
         $pengurus = $member + [

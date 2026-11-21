@@ -23,17 +23,42 @@ class PlatformProvider extends OrchidServiceProvider
     }
 
     /**
-     * Register the application menu.
+     * @return string
+     */
+    public function redirectAfterLogin(): string
+    {
+        $user = auth()->user();
+
+        if ($user->hasAccess('platform.dashboard')) {
+            return route('platform.dashboard');
+        }
+
+        if ($user->member !== null) {
+            return route('platform.my.dashboard');
+        }
+
+        return route(config('platform.index'));
+    }
+
+    /**
+     * Register menu items for the application.
      *
      * @return Menu[]
      */
     public function menu(): array
     {
         return [
-            Menu::make('Get Started')
-                ->icon('bs.book')
-                ->title('Navigation')
-                ->route(config('platform.index')),
+            Menu::make('Dashboard')
+                ->icon('bs.speedometer2')
+                ->route('platform.dashboard')
+                ->permission('platform.dashboard')
+                ->title('Navigation'),
+
+            Menu::make('Dashboard Saya')
+                ->icon('bs.speedometer')
+                ->route('platform.my.dashboard')
+                ->permission('platform.my.dashboard')
+                ->canSee(auth()->user()?->member !== null),
 
             Menu::make('Sample Screen')
                 ->icon('bs.collection')
@@ -121,6 +146,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.businesses')
                 ->addPermission('platform.businesses'),
 
+            Menu::make('Peluang')->icon('bs.briefcase')
+                ->route('platform.opportunities')
+                ->permission('platform.opportunities')
+                ->addPermission('platform.opportunities'),
+
             Menu::make('Profil Saya')
                 ->icon('bs.person-circle')
                 ->route('platform.my.profile')
@@ -136,6 +166,17 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.building')
                 ->route('platform.my.businesses')
                 ->permission('platform.my.businesses'),
+
+            Menu::make('Papan Peluang')
+                ->icon('bs.search')
+                ->route('platform.opportunity-board')
+                ->permission('platform.opportunity-board'),
+
+            Menu::make('Peluang Saya')
+                ->icon('bs.briefcase')
+                ->route('platform.my.opportunities')
+                ->permission('platform.my.opportunities')
+                ->canSee(auth()->user()?->member !== null),
 
         ];
     }
@@ -177,11 +218,13 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.events', 'Event'),
 
             ItemPermission::group('Member Area')
+                ->addPermission('platform.my.dashboard', 'Dashboard Saya')
                 ->addPermission('platform.my.profile', 'Profil Saya')
                 ->addPermission('platform.my.skills', 'Skill Saya')
                 ->addPermission('platform.my.businesses', 'Usaha Saya')
                 ->addPermission('platform.my.opportunities', 'Peluang Saya')
-                ->addPermission('platform.my.events', 'Event Saya'),
+                ->addPermission('platform.my.events', 'Event Saya')
+                ->addPermission('platform.opportunity-board', 'Papan Peluang'),
         ];
     }
 }
